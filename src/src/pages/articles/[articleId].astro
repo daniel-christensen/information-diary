@@ -1,0 +1,16 @@
+---
+import MainLayout from "../../layouts/mainLayout.astro";
+import { getArticleContent } from "../../lib/contentful";
+import "github-markdown-css/github-markdown.css";
+import "../../styles/markdown-edit.css"
+
+const { articleId } = Astro.params;
+const articleContent = await getArticleContent(articleId ? articleId : "");
+---
+<MainLayout>
+    <div class="bg-white text-black flex flex-auto rounded-lg p-8 mt-1 ml-1 mb-2 mr-2">
+        <div class="overflow-auto w-full">
+            <article set:html={articleContent} class="markdown-body w-full"/>
+        </div>
+    </div>
+</MainLayout>

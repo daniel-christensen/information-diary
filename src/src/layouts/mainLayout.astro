@@ -1,28 +1,29 @@
 ---
-import Base from "../layouts/base.astro";
+import BaseLayout from "../layouts/baseLayout.astro";
 import Header from "../components/header.astro";
 import Navigation from "../components/navigation.astro";
 import Login from "../components/login.astro";
 import { getSession } from "auth-astro/server";
-import "../styles/custom.css";
+import { getNavigationTree } from "../lib/contentful.ts";
 
 const whistlistedEmails = import.meta.env.WHISTLISTED_EMAILS.split(",");
 const session = await getSession(Astro.request);
+const tree = await getNavigationTree();
 ---
-<Base>
+<BaseLayout>
 	{
 		(session !== null && whistlistedEmails.includes(session?.user?.email)) ? (
-			<Header />
-			<section class="flex flex-auto">
-				<aside class="flex">
-					<Navigation />
+			<Header transition:persist />
+			<section class="flex flex-auto overflow-auto">
+				<aside class="flex" transition:persist="navigation">
+					<Navigation tree={tree}/>
 				</aside>
-				<article class="flex flex-auto main-article-pattern">
+				<section class="flex flex-auto" transition:animate="slide">
 					<slot />
-				</article>
+				</section>
 			</section>
 		) : (
 			<Login />
 		)
 	}
-</Base>
+</BaseLayout>

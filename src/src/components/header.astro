@@ -1,8 +1,13 @@
-<header class="navbar bg-zinc-700 text-white flex justify-between">
+<header class="bg-zinc-700 text-white flex justify-between rounded-lg p-2 mt-2 ml-2 mr-2 mb-1">
     <a class="btn btn-ghost text-xl">Information Diary</a>
     <button id="signOutButton" class="btn btn-outline text-white px-7">Sign Out</button>
     <script>
-        const { signOut } = await import("auth-astro/client");
-        document.getElementById("signOutButton")?.addEventListener("click", () => signOut());
+        async function setupSignOut() {
+            const { signOut } = await import("auth-astro/client");
+            document.getElementById("signOutButton")?.addEventListener("click", () => signOut());
+        }
+
+        // Must add the script into this event listener otherwise transitions will remove the client-script.
+        document.addEventListener("astro:page-load", setupSignOut);
     </script>
 </header>
