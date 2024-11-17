@@ -1,16 +1,33 @@
 ---
+import MainLayout from "../layouts/mainLayout.astro";
 
+// import { contentfulClient } from "../lib/contentful";
+// import type { EntryFieldTypes } from "contentful";
+// import { marked } from "marked";
+// import markedKatex from "marked-katex-extension";
+
+// interface Person {
+// 	contentTypeId: "person",
+// 	fields: {
+// 		firstName: EntryFieldTypes.Text, 
+// 		lastName: EntryFieldTypes.Text,
+// 		description: EntryFieldTypes.Text
+// 	}
+// }
+
+// const entries = await contentfulClient.getEntries<Person>({
+// 	content_type: "person",
+// 	"sys.id": "6itqjsRa5qE8gVKmyxzCdT"
+// });
+
+// const options = {
+// 	throwOnError: false
+// };
+
+// marked.use(markedKatex(options));
+// const content = marked.parse(entries.items[0].fields.description);
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro Hello</h1>
-	</body>
-</html>
+<MainLayout>
+	<!-- {entries.items[0].sys.id} -->
+	
+</MainLayout>

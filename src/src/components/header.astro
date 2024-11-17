@@ -1,0 +1,8 @@
+<header class="navbar bg-zinc-700 text-white flex justify-between">
+    <a class="btn btn-ghost text-xl">Information Diary</a>
+    <button id="signOutButton" class="btn btn-outline text-white px-7">Sign Out</button>
+    <script>
+        const { signOut } = await import("auth-astro/client");
+        document.getElementById("signOutButton")?.addEventListener("click", () => signOut());
+    </script>
+</header>

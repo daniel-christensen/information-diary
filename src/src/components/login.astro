@@ -1,0 +1,11 @@
+<div class="bg-zinc-700 flex flex-auto justify-center items-center">
+    <div class="card bg-white w-96">
+        <div class="card-body items-center text-center">
+            <button id="signInButton" class="btn btn-primary w-full">GitHub Login</button>
+            <script>
+                const { signIn } = await import("auth-astro/client");
+                document.getElementById("signInButton")?.addEventListener("click", () => signIn("github"));
+            </script>   
+        </div>
+    </div>
+</div>
